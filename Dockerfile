@@ -9,4 +9,4 @@ RUN apt-get install -y nodejs
 RUN apt-get install -y npm
 RUN npm install zeromq@5
 RUN npm rebuild
-EXPOSE ${PORT}
+
