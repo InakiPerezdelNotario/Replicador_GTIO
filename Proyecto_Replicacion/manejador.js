@@ -29,15 +29,15 @@ let inaki = "172.18.69.120"
 
 //cambiar dir_ip_1 con la  direccion ip correspondiente a la maquina
 //donde se ejecute el proxy_1
-dir_ip_p1 = inaki
+//dir_ip_p1 = inaki
 
 //cambiar dir_ip_2 con la  direccion ip correspondiente a la maquina
 //donde se ejecute el proxy_2
-dir_ip_p2 = inaki
+//dir_ip_p2 = inaki
 
 //fragmento que busca la direccion ip del manejador y construye la direccion:puerto para los sockets
 //del secuenciador
-/*const { networkInterfaces } = require('os');
+const { networkInterfaces } = require('os');
 const nets = networkInterfaces();
 const results = Object.create(null); // or just '{}', an empty object
 
@@ -50,9 +50,10 @@ for (const name of Object.keys(nets)) {
             encontrado=true
         }
     }
-}*/
-dir_ip = inaki
-
+}
+//dir_ip = inaki
+dir_ip_p1 = dir_ip
+dir_ip_p2 = dir_ip
 
 sock_cliente.identity = RHid;
 sock_cliente.connect(cabecera+dir_ip_p1+separador+puerto_proxy1)

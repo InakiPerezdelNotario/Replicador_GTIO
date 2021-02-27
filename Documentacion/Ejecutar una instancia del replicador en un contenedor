@@ -1,0 +1,18 @@
+Construir la imagen:
+
+En la ruta donde se encuentra el dockerfile:
+
+docker build -t simplehttpserver:latest .
+docker run -it -d simplehttpserver:latest
+
+docker ps
+docker exec -it <CONTAINER ID> bash
+cd /tmp/server/
+sh ejecucionTotal_contenedor.sh
+
+Ejecucion del cliente:
+
+Antes de ejecutar el cliente, hay que asegurarse de que su ip sea la del
+contenedor, una vez asegurado ejecutar el siguiente comando:
+
+nodejs cliente.js 1 1

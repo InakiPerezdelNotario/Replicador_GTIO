@@ -22,7 +22,23 @@ let unai = "172.18.69.130"
 let inaki = "172.18.69.120"
 
 //especificar la direccion ip del proxy_2
-dir_ip=inaki
+//dir_ip=inaki
+
+//fragmento que busca la direccion ip y construye la direccion:puerto para los sockets
+const { networkInterfaces } = require('os');
+const nets = networkInterfaces();
+const results = Object.create(null); // or just '{}', an empty object
+
+for (const name of Object.keys(nets)) {
+    for (const net of nets[name]) {
+		//evita todas las direcciones que no sean ipv4 o la direccion interna (127.0.0.1)
+        if (net.family === 'IPv4' && !net.internal && !encontrado) {
+            dir_ip = net.address;
+            //nos vale con la primera direccion asi que paramos
+            encontrado=true
+        }
+    }
+}
 
 sock.connect(cabecera+dir_ip+separador+puerto)//Conectamos el socket al proxy 
 //sock.send(['', JSON.stringify({"fuente": sock.identity, "OP": "HOLA"})]);

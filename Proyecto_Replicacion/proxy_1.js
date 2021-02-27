@@ -24,7 +24,7 @@ for (const name of Object.keys(nets)) {
         }
     }
 }
-dir_ip = "172.18.69.120"
+//dir_ip = "172.18.69.120"
 let frontend = cabecera+dir_ip+separador+puerto_front
 //let frontend = cabecera+"172.18.69.129"+separador+puerto_front
 let backend = cabecera+dir_ip+separador+puerto_back
