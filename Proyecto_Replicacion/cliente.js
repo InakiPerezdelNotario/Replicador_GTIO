@@ -24,7 +24,7 @@ for (let i = 1; i <= numManejadores; i++){
 
 //cambiar dir_ip con la  direccion ip correspondiente a la maquina
 //donde se ejecute el proxy_1git
-dir_ip = "172.17.0.1"
+dir_ip = "172.17.0.2"
 sock.connect(cabecera+dir_ip+separador+puerto) 
 
 let timeout = 300;

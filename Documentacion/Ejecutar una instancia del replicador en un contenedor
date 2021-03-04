@@ -5,12 +5,17 @@ En la ruta donde se encuentra el dockerfile:
 docker build -t simplehttpserver:latest .
 docker run -it -d simplehttpserver:latest
 
+Acceder a la maquina:
+
 docker ps
 docker exec -it <CONTAINER ID> bash
+
+Comandos ejecutados en el contenedor:
+
 cd /tmp/server/
 sh ejecucionTotal_contenedor.sh
 
-Ejecucion del cliente:
+Ejecucion del cliente en el host:
 
 Antes de ejecutar el cliente, hay que asegurarse de que su ip sea la del
 contenedor, una vez asegurado ejecutar el siguiente comando:
