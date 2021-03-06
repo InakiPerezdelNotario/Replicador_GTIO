@@ -1,0 +1,21 @@
+Explicación:
+
+Docker compose es una herramienta que sirve para definir y ejecutar
+aplicaciones multicontenedor.
+
+Para utilizarlo se tiene que crear un fichero llamado docker-compose.yml
+y ejecutarlo con el comando docker-compose up.
+
+Dentro del yml hay que definir dentro de "services" los contenedores que
+va a tener la aplicación, se puede definir la imagen y el dockerfile
+que se utilizara para construirla.
+
+Para instrucciones más avanzadas, revisar el siguiente enlace:
+
+https://github.com/compose-spec/compose-spec/blob/master/spec.md
+
+Ejecutar Replicador:
+
+Para ejecutar el replicador, hay que ir a la carpeta donde está situado
+el .yml y ejecutarlo con el comando "docker-compose up"
+
