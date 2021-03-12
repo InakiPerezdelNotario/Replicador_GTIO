@@ -1,0 +1,19 @@
+Autenticación:
+
+Crear Servicio:
+
+curl -i -X POST \--url http://172.21.0.3:8001:8001/services/ \--data 'name=HELADERIA' \--data 'url=http://localhost:9001'
+
+Instalar pluguin en el servicio:
+
+curl -X POST http://172.21.0.3:8001/services/HELADERIA/plugins \
+    --data "name=basic-auth"  \
+    --data "config.hide_credentials=true"
+
+Crear Usuario:
+
+curl -d "username=unaitxo&custom_id=GALLETA" http://172.21.0.3:8001/consumers/
+
+curl -X POST http://172.21.0.3:8001/consumers/unaitxo/basic-auth \
+    --data "username=unaitxo" \
+    --data "password=unaitxin"
