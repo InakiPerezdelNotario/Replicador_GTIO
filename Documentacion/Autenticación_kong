@@ -1,19 +1,63 @@
-Autenticación:
+CREAR SERVICIO
 
-Crear Servicio:
+curl -i -X POST \
+  --url http://localhost:8001/services/ \
+  --data 'name=helad' \
+  --data 'url=http://mockbin.org'
+  
+1.  Asignar direccion al servicio
+  
+curl -i -X POST \
+  --url http://localhost:8001/services/example-service/routes \
+  --data 'hosts[]=example.com'
 
-curl -i -X POST \--url http://172.21.0.3:8001:8001/services/ \--data 'name=HELADERIA' \--data 'url=http://localhost:9001'
+2. Llamar servicio
 
-Instalar pluguin en el servicio:
+curl -i -X GET \
+  --url http://localhost:8000/ \
+  --header 'Host: example.com'
 
-curl -X POST http://172.21.0.3:8001/services/HELADERIA/plugins \
+AUTENTICACION
+
+1. Instalar plugin (3 opciones)
+
+- Globalmente:
+
+curl -X POST http://localhost:8001/plugins/ \
     --data "name=basic-auth"  \
     --data "config.hide_credentials=true"
 
-Crear Usuario:
+- En un servicio:
 
-curl -d "username=unaitxo&custom_id=GALLETA" http://172.21.0.3:8001/consumers/
+curl -X POST http://localhost:8001/services/example-service/plugins \
+    --data "name=basic-auth"  \
+    --data "config.hide_credentials=true"
+    
+- A una ruta:
+    
+2. Crear usuario
 
-curl -X POST http://172.21.0.3:8001/consumers/unaitxo/basic-auth \
-    --data "username=unaitxo" \
-    --data "password=unaitxin"
+curl -d "username=user123&custom_id=SOME_CUSTOM_ID" http://localhost:8001/consumers/
+
+3. Crear autenticación de usuario
+
+curl -X POST http://localhost:8001/consumers/user123/basic-auth \
+    --data "username=Aladdin" \
+    --data "password=OpenSesame"
+
+4. Una vez creado el usuario, probar a acceder al servicio
+
+- Sin autenticación 
+
+curl -i -X GET \
+  --url http://localhost:8000/ \
+  --header 'Host: example.com'
+
+- Con autenticación (en base64)
+
+echo -n Aladdin:OpenSesame|base64
+
+curl -i -X GET \
+  --url http://localhost:8000/ \
+  --header 'Host: example.com' \
+  -H 'Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l'
