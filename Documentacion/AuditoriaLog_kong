@@ -1,7 +1,8 @@
 
 -= File Log =-
 
-Configurar plugin en un servicio mediante la siguiente petición
+
+** Configurar plugin en un servicio mediante la siguiente petición
 
 $ curl -X POST http://localhost:8001/services/ \
     --data "name=file-log"  \
@@ -9,7 +10,20 @@ $ curl -X POST http://localhost:8001/services/ \
     --data "config.reopen=false"
 
 
-Instalación (4 formas)
+** Formato de los logs
+
+El formato que tiene cada petición está guardada en objetos JSON de forma separada.
+Entre muchas opciones, se almecena información relevante como:
+    - Las propiedades de las peticiones de un cliente
+    - Las propiedades de las respuestas que se le envían al cliente
+    - Las propiedades de una ruta especificada por la petición
+    - Las propiededas del servicio asociado a la petición
+    - Las propiedades sobre la autenticación del cliente (solo si está activado el plugin de autenticación)
+    - Información sobre la latencia
+    - La dirección IP del cliente que hace la petición
+   
+
+** Instalación (4 formas)
 
 - De froma global:
 
@@ -20,12 +34,10 @@ curl -X POST http://<localhost>:8001/plugins/ \
 
 - En un consumidor
 
-
 curl -X POST http://<localhost>:8001/consumers/<consumer>/plugins \
     --data "name=file-log"  \
     --data "config.path=/tmp/file.log" \
     --data "config.reopen=false"
-
 
 - En un servicio:
 
@@ -34,10 +46,10 @@ curl -X POST http://<localhost>:8001/services/<service>/plugins \
     --data "config.path=/tmp/file.log" \
     --data "config.reopen=false"
 
-
 - En una ruta:
 
 curl -X POST http://<localhost>:8001/routes/<route>/plugins \
     --data "name=file-log"  \
     --data "config.path=/tmp/file.log" \
     --data "config.reopen=false
+
