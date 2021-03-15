@@ -13,6 +13,7 @@ let inaki = "172.18.69.120"
 let cabecera = "tcp://"
 let separador = ":"
 let puerto ="1112"
+//puerto = "8000"
 let seq = 1; 
 
 let numManejadores = process.argv[2];
@@ -24,7 +25,7 @@ for (let i = 1; i <= numManejadores; i++){
 
 //cambiar dir_ip con la  direccion ip correspondiente a la maquina
 //donde se ejecute el proxy_1git
-dir_ip = "172.19.0.2"
+dir_ip = "172.21.0.4"
 sock.connect(cabecera+dir_ip+separador+puerto) 
 
 let timeout = 300;
