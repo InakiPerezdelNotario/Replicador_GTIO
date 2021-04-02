@@ -1,7 +1,7 @@
 pipeline {
   agent {
-    docker {
-      image 'simplehttpserver'
+    dockerfile {
+      filename 'Dockerfile'
     }
 
   }
