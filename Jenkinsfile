@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    dockerfile {
+      filename 'Dockerfile'
+    }
+
+  }
   stages {
     stage('build') {
       steps {
@@ -8,5 +13,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    Raiz = ''
   }
 }
