@@ -9,7 +9,7 @@ pipeline {
     stage('build') {
       steps {
         sh 'ls'
-        sh 'docker-compose up'
+        sh 'sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose'
       }
     }
 
