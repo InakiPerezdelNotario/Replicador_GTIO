@@ -1,0 +1,17 @@
+Paso 1: Instalar Jenkins
+
+docker pull jenkins/jenkins:lts
+
+Paso 2: Iniciar el docker
+
+docker run -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts
+
+Password: 5c63945f979b42bab0530834df313e66
+
+Paso 3: Meternos en jenkins
+
+localhost:8080 en el navegador
+
+Paso 4: Instalar los plugins por defecto
+
+Paso 5: Crear una cuenta.
