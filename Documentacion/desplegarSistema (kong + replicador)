@@ -1,0 +1,41 @@
+Desplegar el replicador y kong con docker-compose up en las carpetas correspondientes
+
+Crear la red que comunica kong con el replicador
+
+docker network create myNetwork
+
+docker ps
+
+docker network connect myNetwork eb959369cf83 ##(id docker replicador)
+docker network connect myNetwork ##(id docker kong) 
+
+ver las ips asignadas
+
+docker network inspect myNetwork
+
+
+curl -i -X POST \
+  --url http://localhost:8001/services/ \
+  --data 'name=replicador' \
+  --data 'url=http://(ip replicador):8080'
+
+curl -i -X POST \
+  --url http://localhost:8001/services/replicador/routes \
+  --data 'hosts[]=replicador.com'
+
+Realizar petición al kong, que lo redirige hasta el replicador
+
+curl -i -X GET \
+  --url http://localhost:8000/ \
+  --header 'Host: replicador.com' \
+  -H 'Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l'
+
+Para eliminar el servicio en kong, primero hay que eliminar las rutas.
+
+curl -i -X GET \
+  --url http://localhost:8001/services/holamundo/routes
+  
+curl -i -X DELETE  http://localhost:8001/routes/(id ruta)
+
+curl -i -X DELETE \
+  --url http://localhost:8001/services/replicador

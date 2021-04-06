@@ -2,7 +2,7 @@ CREAR SERVICIO
 
 curl -i -X POST \
   --url http://localhost:8001/services/ \
-  --data 'name=helad' \
+  --data 'name=example-service' \
   --data 'url=http://mockbin.org'
   
 1.  Asignar direccion al servicio

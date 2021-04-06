@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  manejador:
+    build: .
+    image: "simplehttpserver:latest"
+    dockerfile: ./Dockerfile_manejadores
+  replica: 
+    build: .
+    image: "simplehttpserver:latest"
+    dockerfile: ./Dockerfile_replicas
