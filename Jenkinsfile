@@ -12,7 +12,8 @@ pipeline {
         sh 'ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose'
         sh 'cd /var/jenkins_home/workspace/Replicador_GTIO_main'
         sh 'ls'
-        sh 'docker-compose up'
+        sh '''docker-compose up /var/jenkins_home/workspace/Replicador_GTIO_main
+'''
       }
     }
 
