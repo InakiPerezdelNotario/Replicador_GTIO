@@ -4,7 +4,49 @@ pipeline {
     stage('build') {
       steps {
         sh 'ls'
-        sh 'docker-compose up'
+        sh '''
+
+docker-compose build
+
+'''
+        sh '''docker-compose up &
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+        sh 'sleep 20'
+        sh 'sh inicializar.sh'
       }
     }
 
