@@ -7,13 +7,13 @@ const requestListener = function (req, res) {
   exec('CMD cd /tmp/server/; nodejs /tmp/server/cliente.js 1 1', (error, stdout, stderr) => {
 	if (error) {
 		console.error(`error: ${error.message}`);
-		res.end('ERROR');
+		res.end('ERROR0');
 		return error;
 	}
 
 	else if (stderr) {
 		console.error(`stderr: ${stderr}`);
-		res.end('ERROR');
+		res.end('ERROR1');
 		return stderr;
 	}
 	else{

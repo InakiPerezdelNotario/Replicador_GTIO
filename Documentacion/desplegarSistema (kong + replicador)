@@ -33,7 +33,7 @@ curl -i -X GET \
 Para eliminar el servicio en kong, primero hay que eliminar las rutas.
 
 curl -i -X GET \
-  --url http://localhost:8001/services/holamundo/routes
+  --url http://localhost:8001/services/replicador/routes
   
 curl -i -X DELETE  http://localhost:8001/routes/(id ruta)
 

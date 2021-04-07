@@ -25,7 +25,7 @@ for (let i = 1; i <= numManejadores; i++){
 
 //cambiar dir_ip con la  direccion ip correspondiente a la maquina
 //donde se ejecute el proxy_1git
-dir_ip = "172.19.0.2"
+dir_ip = "172.25.0.3"
 sock.connect(cabecera+dir_ip+separador+puerto) 
 
 let timeout = 300;
@@ -56,7 +56,7 @@ sock.on('message', function () {
     	}
         else{
             console.log("Tiempo Medio de respuesta : " + sumTiempo / recibidos.size);
-            process.exit();
+            process.exit(0);
         }
     }
     booleans[message.CMD.seqC] = true
