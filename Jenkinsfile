@@ -5,7 +5,6 @@ pipeline {
       steps {
         sh 'ls'
         sh 'docker-compose up'
-        sh 'echo HOLA'
       }
     }
 
