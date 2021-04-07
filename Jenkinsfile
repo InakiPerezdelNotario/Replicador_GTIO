@@ -9,42 +9,7 @@ pipeline {
 docker-compose build
 
 '''
-        sh '''docker-compose up &
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
+        sh 'docker-compose up -d'
         sh 'sleep 20'
         sh 'sh inicializar.sh'
       }
