@@ -4,7 +4,7 @@ const { exec } = require("child_process");
 const requestListener = function (req, res) {
   res.writeHead(200);
   //res.end('Hello, World!');
-  exec('CMD cd /tmp/server/; nodejs /tmp/server/cliente.js 1 1', (error, stdout, stderr) => {
+  exec('cd /tmp/server/; nodejs /tmp/server/cliente.js 1 1', (error, stdout, stderr) => {
 	if (error) {
 		console.error(`error: ${error.message}`);
 		res.end('ERROR0');

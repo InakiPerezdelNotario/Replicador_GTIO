@@ -33,7 +33,7 @@ let booleans = {};
 let recibidos = new Set()
 let tiempo;
 let sumTiempo = 0;
-let maxi = 1000;
+let maxi = 100;
 let i = 0;
 //getFromServer(process.argv[2],process.argv[3],process.argv[4]) 
 

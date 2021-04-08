@@ -6,6 +6,7 @@ services:
             args:
                 HOST_UID: ${HOST_UID}
                 HOST_GID: ${HOST_GID}
+            network: host
 
         restart: unless-stopped
         volumes:
