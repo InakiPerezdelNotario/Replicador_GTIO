@@ -16,6 +16,14 @@ docker-compose build
       }
     }
 
+    stage('Test') {
+      steps {
+        sh '''curl -i -X GET \\
+  --url http://localhost:8000/ \\
+  --header \'Host: replicador.com\''''
+      }
+    }
+
   }
   environment {
     PATH = "$PATH:"
