@@ -4,7 +4,6 @@ pipeline {
     stage('build') {
       steps {
         sh 'ls'
-        sh 'docker network create kong-net'
         sh '''docker run -d --name kong-database \\
                --network=kong-net \\
                -p 9042:9042 \\
