@@ -4,11 +4,30 @@ pipeline {
     stage('build') {
       steps {
         sh 'ls'
-        sh 'docker network create kong-net'
-        sh '''docker run -d --name kong-database \\
-               --network=kong-net \\
-               -p 9042:9042 \\
-               cassandra:3'''
+        sh '''docker run --rm \\
+     --network=kong-net \\
+     -e "KONG_DATABASE=postgres" \\
+     -e "KONG_PG_HOST=kong-database" \\
+     -e "KONG_PG_USER=kong" \\
+     -e "KONG_PG_PASSWORD=kong" \\
+     -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" \\
+     kong:latest kong migrations bootstrap'''
+        sh '''docker run --rm \\
+     --network=kong-net \\
+     -e "KONG_DATABASE=postgres" \\
+     -e "KONG_PG_HOST=kong-database" \\
+     -e "KONG_PG_USER=kong" \\
+     -e "KONG_PG_PASSWORD=kong" \\
+     -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" \\
+     kong:latest kong migrations bootstrap'''
+        sh '''docker run --rm \\
+     --network=kong-net \\
+     -e "KONG_DATABASE=postgres" \\
+     -e "KONG_PG_HOST=kong-database" \\
+     -e "KONG_PG_USER=kong" \\
+     -e "KONG_PG_PASSWORD=kong" \\
+     -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" \\
+     kong:latest kong migrations bootstrap'''
         sh '''
 
 docker-compose build
