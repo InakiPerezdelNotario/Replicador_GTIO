@@ -9,6 +9,8 @@ networks:
 services:
   
   replicador:
+    depends_on:
+      - kong
     build: .
     image: "simplehttpserver:latest"
     networks:
