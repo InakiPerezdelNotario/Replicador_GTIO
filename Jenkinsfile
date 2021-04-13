@@ -4,7 +4,6 @@ pipeline {
     stage('build') {
       steps {
         sh 'ls'
-        sh '(cd kong_jenkins/ && docker-compose up)'
         sh '''
 
 docker-compose build
