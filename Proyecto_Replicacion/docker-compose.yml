@@ -1,0 +1,12 @@
+version: '3.1'  
+
+networks:
+  kong-ee-net:
+    external: true
+
+services:
+  replicador:
+    build: .
+    image: "simplehttpserver:latest"
+    networks:
+      - kong-ee-net
