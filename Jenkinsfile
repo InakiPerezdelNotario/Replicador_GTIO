@@ -11,6 +11,7 @@ docker-compose build
 '''
         sh 'docker-compose up -d'
         sh 'sleep 20'
+        sh '(cd Proyecto_Replicacion/ && docker-compose up)'
         sh 'sh inicializar.sh'
       }
     }
