@@ -19,6 +19,7 @@ services:
       POSTGRES_USER: kong
       POSTGRES_DB: kong
       POSTGRES_PASSWORD: kong
+    restart: on-failure
   
   kong-migrations:
     depends_on:
@@ -32,10 +33,11 @@ services:
       KONG_PG_HOST: kong-database
       KONG_PG_PASSWORD: kong
       KONG_PASSWORD: kong
+    restart: on-failure
   
   kong:
     depends_on:
-      - kong-database
+      - kong-migrations
     image: "kong-ee"
     networks:
       - kong-ee-net
@@ -58,4 +60,5 @@ services:
       KONG_ADMIN_ERROR_LOG: /dev/stderr
       KONG_ADMIN_LISTEN: 0.0.0.0:8001
       KONG_ADMIN_GUI_URL: http://localhost:8002
+    restart: on-failure
 
