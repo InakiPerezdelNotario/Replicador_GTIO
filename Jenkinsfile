@@ -13,6 +13,7 @@ docker-compose build
 '''
         sh 'docker-compose up -d --remove-orphans'
         sh 'sleep 15'
+        sh '(cd Proyecto_Replicacion/ && docker-compose build)'
         sh '(cd Proyecto_Replicacion/ && docker-compose up)'
         sh 'sleep 15'
       }
