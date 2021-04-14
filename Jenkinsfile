@@ -11,7 +11,7 @@ docker-compose build
 '''
         sh 'docker-compose up -d --remove-orphans'
         sh 'sleep 20'
-        sh '(cd Proyecto_Replicacion/ && docker-compose up)'
+        sh '(cd Proyecto_Replicacion/ && docker-compose up -d)'
         sh 'sh inicializar.sh'
       }
     }
@@ -19,7 +19,7 @@ docker-compose build
     stage('Test') {
       steps {
         sh '''curl -i -X GET \\
-  --url http://localhost:8000/ \\
+  --url http://172.18.69.90:8000/ \\
   --header \'Host: replicador.com\''''
       }
     }
