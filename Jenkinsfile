@@ -12,9 +12,9 @@ docker-compose build
 
 '''
         sh 'docker-compose up -d --remove-orphans'
-        sh 'sleep 20'
+        sh 'sleep 15'
         sh '(cd Proyecto_Replicacion/ && docker-compose up -d)'
-        sh 'sh inicializar.sh'
+        sh 'sleep 15'
       }
     }
 
