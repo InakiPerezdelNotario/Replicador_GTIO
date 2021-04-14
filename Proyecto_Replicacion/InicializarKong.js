@@ -6,6 +6,7 @@ const nets = networkInterfaces();
 const results = Object.create(null); // or just '{}', an empty object
 
 dir_ip = 'localhost';
+encontrado = false;
 for (const name of Object.keys(nets)) {
     for (const net of nets[name]) {
 		//evita todas las direcciones que no sean ipv4 o la direccion interna (127.0.0.1)
