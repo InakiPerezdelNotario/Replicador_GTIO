@@ -9,5 +9,4 @@ RUN apt-get install -y nodejs
 RUN apt-get install -y npm
 RUN apt-get install -y curl
 RUN npm install zeromq@5
-CMD cd /tmp/server/; nodejs InicializarKong.js
 CMD cd /tmp/server/; sh /tmp/server/ejecucionTotal_contenedor.sh

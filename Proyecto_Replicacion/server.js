@@ -2,6 +2,7 @@ const http = require('http');
 const { exec } = require("child_process");
 
 const requestListener = function (req, res) {
+  console.log("PETICION RECIBIDA");
   res.writeHead(200);
   //res.end('Hello, World!');
   exec('cd /tmp/server/; nodejs /tmp/server/cliente.js 1 1', (error, stdout, stderr) => {

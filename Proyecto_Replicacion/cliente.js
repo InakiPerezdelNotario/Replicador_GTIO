@@ -1,6 +1,8 @@
 "use strict"
 const zmq = require('zeromq')
 let sock = zmq.socket('dealer')
+const { networkInterfaces } = require('os');
+const nets = networkInterfaces();
 sock.identity = process.pid.toString()
 
 //variables de la asignacion automatica de ip puerto 
@@ -24,8 +26,17 @@ for (let i = 1; i <= numManejadores; i++){
 }
 
 //cambiar dir_ip con la  direccion ip correspondiente a la maquina
-//donde se ejecute el proxy_1git
-dir_ip = "172.25.0.3"
+dir_ip = "localhost"
+for (const name of Object.keys(nets)) {
+    for (const net of nets[name]) {
+		//evita todas las direcciones que no sean ipv4 o la direccion interna (127.0.0.1)
+        if (net.family === 'IPv4' && !net.internal && !encontrado) {
+            dir_ip = net.address;
+            //nos vale con la primera direccion asi que paramos
+            encontrado=true
+        }
+    }
+}
 sock.connect(cabecera+dir_ip+separador+puerto) 
 
 let timeout = 300;
