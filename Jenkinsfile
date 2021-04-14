@@ -4,6 +4,8 @@ pipeline {
     stage('build') {
       steps {
         sh 'ls'
+        sh 'docker network create kong-ee-net'
+        sh 'sh CerrarServicios.sh'
         sh '''
 
 docker-compose build
