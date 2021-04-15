@@ -19,7 +19,7 @@ for (const name of Object.keys(nets)) {
 }
 
 //Inicializo el servicio
-  exec('curl -i -X POST \
+exec('curl -i -X POST \
   --url http://172.18.69.90:8001/services/ \
   --data "name=replicador" \
   --data "url=http://' + dir_ip + ':8080"', (error, stdout, stderr) => {
@@ -36,23 +36,25 @@ for (const name of Object.keys(nets)) {
 		//console.log(`stdout:\n${stdout}`);
 		//console.log('TERMINADO');
 	}
-  });
+	
+	//Inicializo la ruta
+	exec('curl -i -X POST \
+	  --url http://172.18.69.90:8001/services/replicador/routes \
+	  --data "hosts[]=replicador.com"', (error, stdout, stderr) => {
+		if (error) {
+			//console.log(`error: ${error.message}`);
+			//console.log('ERROR0');
+		}
 
-//Inicializo la ruta
-exec('curl -i -X POST \
-  --url http://172.18.69.90:8001/services/replicador/routes \
-  --data "hosts[]=replicador.com"', (error, stdout, stderr) => {
-	if (error) {
-		//console.log(`error: ${error.message}`);
-		//console.log('ERROR0');
-	}
+		else if (stderr) {
+			//console.log(`stderr: ${stderr}`);
+			//console.log('ERROR1');
+		}
+		else{
+			//console.log(`stdout:\n${stdout}`);
+			//console.log('TERMINADO');
+		}
+	});
+});
 
-	else if (stderr) {
-		//console.log(`stderr: ${stderr}`);
-		//console.log('ERROR1');
-	}
-	else{
-		//console.log(`stdout:\n${stdout}`);
-		//console.log('TERMINADO');
-	}
-  });
+
