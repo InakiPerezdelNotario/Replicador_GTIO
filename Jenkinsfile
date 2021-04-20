@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('build + deploy') {
       steps {
         sh 'ls'
         sh 'sh CerrarServicios.sh'
